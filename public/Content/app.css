@@ -117,3 +117,12 @@ section h1 {
   transform: rotate(-45deg);
   box-sizing: border-box;
 }
+
+#about {
+  background-image: linear-gradient(
+    to right,
+    rgb(188, 196, 163),
+    hsl(189, 71%, 73%),
+    hsl(152, 66%, 80%)
+  );
+}
