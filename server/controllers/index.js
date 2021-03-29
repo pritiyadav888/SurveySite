@@ -3,7 +3,7 @@ let flash = require('connect-flash');
 let router = express.Router();
 let mongoose = require('mongoose');
 let passport = require('passport');
-const { exists } = require('../models/book');
+const { exists } = require('../models/surveys');
 
 
 
@@ -20,10 +20,7 @@ module.exports.displayAboutPage = (req, res, next) =>{
     res.render('about', {title: 'About', displayName: req.user ? req.user.displayName : ''});
 
 }
-module.exports.displayProjectPage = (req, res, next) =>{
-    res.render('projects', {title: 'Projects', displayName: req.user ? req.user.displayName : ''});
 
-}
 module.exports.displayServicePage = (req, res, next) =>{
     res.render('services', {title: 'Services', displayName: req.user ? req.user.displayName : ''});
 
@@ -71,7 +68,7 @@ module.exports.processLoginPage = (req, res, next) => {
             {
                 return next(err);
             }
-            return res.redirect('/books-list');
+            return res.redirect('/surveys');
 
         });
 
@@ -131,7 +128,7 @@ module.exports.processRegisterPage = (req, res, next) => {
 
             // redirect the user and authenticate
             return passport.authenticate('local')(req, res, () => {
-                res.redirect('/books-list')
+                res.redirect('/surveys')
 
             });
         }

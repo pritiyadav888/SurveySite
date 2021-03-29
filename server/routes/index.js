@@ -13,9 +13,6 @@ router.get('/home', indexController.displayHomePage);
 
 router.get('/about', indexController.displayAboutPage);
 
-/* GET projects page. */
-
-router.get('/project', indexController.displayProjectPage);
 
 
 /* GET services page. */
@@ -23,7 +20,7 @@ router.get('/project', indexController.displayProjectPage);
 router.get('/service', indexController.displayServicePage);
 
 
-/* GET book page. */
+/* GET Survey page. */
 // router.get('/book', indexController.displayBookPage);
 
 

@@ -15,9 +15,9 @@
                     <label for="nameField">Name</label>
                     <input type="text" class="form-control"
                     id="nameField"
-                    placeholder="Write name of your Book!"
+                    placeholder="Write name of your Survey!"
                     name="title" 
-                    value = "<%= books.title %>"
+                    value = "<%= surveys.name %>"
                     required>
                 </div>
 
@@ -29,37 +29,47 @@
                     id="emailField"
                     placeholder="Write the name of author!"
                     name="author" 
-                    value = "<%= books.author %>"
+                    value = "<%= surveys.author %>"
                     required>
                 </div>
 
                 <div class="form-group">
-                    <label for="priceField">Price</label>
+                    <label for="priceField">Question-1</label>
                     <input type="text" class="form-control"
                     id="priceField"
                     placeholder="Write the price!"
                     name="price"
-                    value = "<%= books.price %>"
+                    value = "<%= surveys.que1 %>"
                     required>
                 </div>
 
                  <div class="form-group">
-                    <label for="publishedField">Published</label>
+                    <label for="publishedField">Question-2</label>
                     <input type="text" class="form-control"
                     id="publishedField"
                     placeholder="Write the published date!"
                     name="published"
-                    value = "<%= books.published %>"
+                    value = "<%= surveys.que2 %>"
                     required>
                 </div>
 
                  <div class="form-group">
-                    <label for="overviewField">Overview</label>
+                    <label for="overviewField">Question-3</label>
                     <input type="text" class="form-control"
                     id="overviewField"
                     placeholder="Write the Overview!"
                     name="overview"
-                    value = "<%= books.overview %>"
+                    value = "<%= surveys.que3 %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="overviewField">Question-4</label>
+                    <input type="text" class="form-control"
+                    id="overviewField"
+                    placeholder="Write the Overview!"
+                    name="overview"
+                    value = "<%= surveys.que %>"
                     required>
                 </div>
 

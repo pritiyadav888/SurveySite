@@ -5,7 +5,7 @@
  */
 
 var app = require('./server/config/app');
-var debug = require('debug')('Assignment BookList:server');
+var debug = require('debug')('Assignment Survey:server');
 var http = require('http');
 
 /**
@@ -76,6 +76,7 @@ function onError(error) {
       throw error;
   }
 }
+
 
 /**
  * Event listener for HTTP server "listening" event.

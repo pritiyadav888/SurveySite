@@ -1,0 +1,84 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+  
+
+  <!-- Main Content -->
+  <main class="container">
+   <div class="row">
+       <div class="col-md-offset-3 col-md-10">
+           <h1><%= title %></h1>
+           <% if(typeof displayName == 'string' && displayName) { %>
+                <a href="/surveys/add" class="btn btn primary" role = "button">
+                <i class="fas fa-plus-circle"></i> Create a Survey</a>
+            <% } %>
+           <br>
+           <p><button onclick="sortTable()">Sort</button></p>
+           <table id = "myTable" class="table table-bordered table-striped table-hover">
+               <!-- header row -->
+               <tr>
+                <% if(typeof displayName == 'string' && displayName) { %>
+                      <th class="text-center">Name</th>
+                      <th class="text-center">Author</th>
+                      <th class="text-center">Question-1</th>
+                      <th class="text-center">Question-2</th>
+                      <th class="text-center">Question-3</th>
+                      <th class="text-center">Question-4</th>
+                      <!-- <th class="text-center">Edit</th>
+                      <th class="text-center">Delete</th> -->
+                      <th class="text-center"></th>
+                      <th class="text-center"></th>
+
+                   <% } else { %>
+
+                      <th class="text-center">Name</th>
+                      <th class="text-center">Author</th>
+                      <th class="text-center">Question-1</th>
+                      <th class="text-center">Question-2</th>
+                      <th class="text-center">Question-3</th>
+                      <th class="text-center">Question-4</th>
+
+                   <% } %>
+               </tr>
+
+               <!-- Repeatable Template Row -->
+               <% for(let count = 0; count < Survey.length; count++){ %>
+                 <tr>
+                    <% if(typeof displayName == 'string' && displayName) { %> 
+                        <td class="text-center"><%= Survey[count].name %></td>
+                        <td class="text-center"><%= Survey[count].author %></td>
+                        <td class="text-center"><%= Survey[count].que1 %></td>
+                        <td class="text-center"><%= Survey[count].que2 %></td>
+                        <td class="text-center"><%= Survey[count].que3 %></td>
+                        <td class="text-center"><%= Survey[count].que4 %></td>
+                        <td class="text-center">
+                          <a href="/surveys/edit/<%- Survey[count]._id %>" class="btn btn-primary">
+                            <i class="fas fa-pencil alt"> Update</i></a>
+
+                        </td>
+                        <td class="text-center">
+                          <a href="/surveys/delete/<%- Survey[count]._id %>" class="btn btn-danger">
+                            <i class="fas fa-trash alt"> Delete</i></a>
+                        </td>
+                  <% } else { %>
+                        <td class="text-center"><%= Survey[count].name %></td>
+                        <td class="text-center"><%= Survey[count].author %></td>
+                        <td class="text-center"><%= Survey[count].que1 %></td>
+                        <td class="text-center"><%= Survey[count].que2 %></td>
+                        <td class="text-center"><%= Survey[count].que3 %></td>
+                        <td class="text-center"><%= Survey[count].que4 %></td>
+                  <% } %>   
+
+                 </tr>
+               <% } %>
+
+       </div>
+   </div>
+   
+  </main>
+<%- include ../partials/sort.ejs %>  
+<%- include ../partials/bottom_nav.ejs %>  
+
+<%- include ../partials/footer.ejs %>
+  
+

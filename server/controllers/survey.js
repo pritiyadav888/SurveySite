@@ -2,19 +2,19 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-//connect to Book model
-let books = require('../models/book');
+//connect to survey model
+let surveys = require('../models/surveys');
 
-module.exports.displayBookList = (req, res, next) => {
-    books.find((err, BookList) => {
+module.exports.displaySurvey = (req, res, next) => {
+    surveys.find((err, Survey) => {
         if (err) {
             return console.error(err);
         }
         else {
-            //    console.log(BookList);
-            res.render('book/list',
-             { title: 'books', 
-             BookList: BookList, 
+            //    console.log(Survey);
+            res.render('surveys',
+             { title: 'surveys', 
+             Survey: Survey, 
              displayName: req.user ? req.user.displayName: ''});
         }
 
@@ -22,29 +22,30 @@ module.exports.displayBookList = (req, res, next) => {
 }
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('book/add', { title: 'Add Book',
+    res.render('surveys/add', { title: 'Add Survey',
     displayName: req.user ? req.user.displayName: '' });
 
 }
 
 module.exports.processAddPage = (req, res, next) => {
-    let newbooks = books({
-        "title": req.body.title,
+    let newsurveys = surveys({
+        "name": req.body.name,
         'author': req.body.author,
-        "price": req.body.price,
-        "overview": req.body.overview,
-        "published": req.body.published
+        "que1": req.body.que1,
+        "que2": req.body.que2,
+        "que3": req.body.que3,
+        "que4": req.body.que4
     
   
     });
-    books.create(newbooks, (err) => {
+    surveys.create(newsurveys, (err) => {
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
-            //refresh the Book list.
-            res.redirect("/books-list");
+            //refresh the Survey list.
+            res.redirect("/surveys");
         }
     });
 
@@ -52,13 +53,13 @@ module.exports.processAddPage = (req, res, next) => {
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
 
-    books.findById(id, (err, BookToEdit) => {
+    surveys.findById(id, (err, SurveyToEdit) => {
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
-            res.render('book/edit', { title: 'Edit Book', books: BookToEdit,
+            res.render('surveys/edit', { title: 'Edit Survey', surveys: SurveyToEdit,
             displayName: req.user ? req.user.displayName: '' });
         }
     });
@@ -67,22 +68,24 @@ module.exports.displayEditPage = (req, res, next) => {
 module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id;
     
-    let updatedBook = books({
+    let updatedSurvey = surveys({
         '_id' : id,
-        "title": req.body.title,
+        "name": req.body.name,
         'author': req.body.author,
-        "price": req.body.price,
-        "overview": req.body.overview,
-        "published": req.body.published
+        "que1": req.body.que1,
+        "que2": req.body.que2,
+        "que3": req.body.que3,
+        "que4": req.body.que4
+        
     });
-    books.updateOne({_id: id}, updatedBook, (err) =>{
+    surveys.updateOne({_id: id}, updatedSurvey, (err) =>{
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
-            //refresh the Book-list
-            res.redirect("/books-list");
+            //refresh the Survey
+            res.redirect("/surveys");
         }
 
     });
@@ -91,15 +94,15 @@ module.exports.processEditPage = (req, res, next) => {
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
 
-    books.remove({_id: id}, (err)=> {
+    surveys.remove({_id: id}, (err)=> {
 
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
-            //refresh the Book-list
-            res.redirect("/books-list");
+            //refresh the Survey
+            res.redirect("/surveys");
         }
 
 

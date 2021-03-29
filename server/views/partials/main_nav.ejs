@@ -3,7 +3,7 @@
 
    <!-- logo link and mission statement -->
     <a class="navbar-brand" href="/images/logo.png">
-      <img src="/images/logo.png" alt="PY" width="60" height="50"> <div class="mission">Code is life, Code till die!"</div>
+      <img src="/images/logoBlackHole.jpg" alt="PY" width="60" height="50"> <div class="mission">Black Hole Survey Site!"</div>
       </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -31,14 +31,6 @@
         </li>
       
 
-        <% if (title == "Projects") { %>
-      <li class="nav-item active">
-      <% } else { %>
-        <li class="nav-item">
-      <% } %>
-          <a class="nav-link " aria-current="page" href="/project"><i class="fas fa-project-diagram"></i> Projects</a>
-        </li>
-
 
         <% if (title == "Services") { %>
       <li class="nav-item active">
@@ -49,21 +41,14 @@
         </li>
 
 
-        <% if (title == "Contact") { %>
+     
+
+        <% if (title == "Survey") { %>
       <li class="nav-item active">
       <% } else { %>
         <li class="nav-item">
       <% } %>
-          <a class="nav-link " aria-current="page" href="/contact">Contact <i class="fas fa-at"></i></a>
-        </li>
-
-
-        <% if (title == "Book") { %>
-      <li class="nav-item active">
-      <% } else { %>
-        <li class="nav-item">
-      <% } %>
-          <a class="nav-link " aria-current="page" href="/books-list">Book <i class="fas fa-at"></i></a>
+          <a class="nav-link " aria-current="page" href="/surveys">Survey </a>
         </li>
 
         <% if(typeof displayName == 'string' && displayName) { %>

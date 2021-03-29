@@ -13,7 +13,7 @@
                 if(!confirm("Are you sure?")) 
                 {
                     event.preventDefault();
-                    window.location.assign('/books-list');
+                    window.location.assign('/surveys');
                 }
             });
         }
